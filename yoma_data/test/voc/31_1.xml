@@ -1,0 +1,59 @@
+<annotation>
+    <folder>voc</folder>
+    <filename>31_1.jpg</filename>
+    <path>D:\pycharm\yolov7\yoma_data\test\voc\31_1.jpg</path>
+    <source>
+        <database>Unknown</database>
+    </source>
+    <size>
+        <width>1920</width>
+        <height>1080</height>
+        <depth>3</depth>
+    </size>
+    <segmented>0</segmented>
+    <object>
+        <name>obj</name>
+        <pose>Unspecified</pose>
+        <truncated>0</truncated>
+        <difficult>0</difficult>
+        <bndbox>
+            <xmin>724.7346248891583</xmin>
+            <ymin>307.9419769167114</ymin>
+            <xmax>1159.9751242123593</xmax>
+            <ymax>674.4229976491639</ymax>
+        </bndbox>
+    </object>    <object>
+        <name>hole</name>
+        <pose>Unspecified</pose>
+        <truncated>0</truncated>
+        <difficult>0</difficult>
+        <bndbox>
+            <xmin>824.7558248256695</xmin>
+            <ymin>551.6438058620375</ymin>
+            <xmax>887.7651671478735</xmax>
+            <ymax>610.7240351219128</ymax>
+        </bndbox>
+    </object>    <object>
+        <name>hole</name>
+        <pose>Unspecified</pose>
+        <truncated>0</truncated>
+        <difficult>0</difficult>
+        <bndbox>
+            <xmin>986.3122011857097</xmin>
+            <ymin>446.4712587834835</ymin>
+            <xmax>1059.6362137968276</xmax>
+            <ymax>523.7243844569299</ymax>
+        </bndbox>
+    </object>    <object>
+        <name>hole</name>
+        <pose>Unspecified</pose>
+        <truncated>0</truncated>
+        <difficult>0</difficult>
+        <bndbox>
+            <xmin>763.5413528823682</xmin>
+            <ymin>380.54572549365776</ymin>
+            <xmax>842.7590350869788</xmax>
+            <ymax>451.9051815736115</ymax>
+        </bndbox>
+    </object>
+</annotation>

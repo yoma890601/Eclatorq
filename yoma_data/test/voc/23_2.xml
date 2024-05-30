@@ -1,0 +1,136 @@
+<annotation>
+    <folder>voc</folder>
+    <filename>23_2.jpg</filename>
+    <path>D:\pycharm\yolov7\yoma_data\test\voc\23_2.jpg</path>
+    <source>
+        <database>Unknown</database>
+    </source>
+    <size>
+        <width>1920</width>
+        <height>1080</height>
+        <depth>3</depth>
+    </size>
+    <segmented>0</segmented>
+    <object>
+        <name>hole</name>
+        <pose>Unspecified</pose>
+        <truncated>0</truncated>
+        <difficult>0</difficult>
+        <bndbox>
+            <xmin>917.301763900766</xmin>
+            <ymin>339.1958618980908</ymin>
+            <xmax>990.8842108682239</xmax>
+            <ymax>399.75219365965705</ymax>
+        </bndbox>
+    </object>    <object>
+        <name>hole</name>
+        <pose>Unspecified</pose>
+        <truncated>0</truncated>
+        <difficult>0</difficult>
+        <bndbox>
+            <xmin>1013.7733935358444</xmin>
+            <ymin>366.1601958995923</ymin>
+            <xmax>1089.6685780675962</xmax>
+            <ymax>429.02926522545215</ymax>
+        </bndbox>
+    </object>    <object>
+        <name>hole</name>
+        <pose>Unspecified</pose>
+        <truncated>0</truncated>
+        <difficult>0</difficult>
+        <bndbox>
+            <xmin>1113.2422338987733</xmin>
+            <ymin>390.5110150090998</ymin>
+            <xmax>1186.010548665863</xmax>
+            <ymax>451.88147897103437</ymax>
+        </bndbox>
+    </object>    <object>
+        <name>hole</name>
+        <pose>Unspecified</pose>
+        <truncated>0</truncated>
+        <difficult>0</difficult>
+        <bndbox>
+            <xmin>1205.7728615688216</xmin>
+            <ymin>425.6581302683617</ymin>
+            <xmax>1277.3433482996866</xmax>
+            <ymax>480.1318407914938</ymax>
+        </bndbox>
+    </object>    <object>
+        <name>hole</name>
+        <pose>Unspecified</pose>
+        <truncated>0</truncated>
+        <difficult>0</difficult>
+        <bndbox>
+            <xmin>1298.0909116939029</xmin>
+            <ymin>453.09435988845286</ymin>
+            <xmax>1377.9270981906843</xmax>
+            <ymax>516.6479023778697</ymax>
+        </bndbox>
+    </object>    <object>
+        <name>hole</name>
+        <pose>Unspecified</pose>
+        <truncated>0</truncated>
+        <difficult>0</difficult>
+        <bndbox>
+            <xmin>1295.7269432689145</xmin>
+            <ymin>597.1067686283596</ymin>
+            <xmax>1375.3038116920734</xmax>
+            <ymax>670.1705794485729</ymax>
+        </bndbox>
+    </object>    <object>
+        <name>hole</name>
+        <pose>Unspecified</pose>
+        <truncated>0</truncated>
+        <difficult>0</difficult>
+        <bndbox>
+            <xmin>1190.2169409216294</xmin>
+            <ymin>563.6761175525673</ymin>
+            <xmax>1272.4487834908605</xmax>
+            <ymax>641.023166919589</ymax>
+        </bndbox>
+    </object>    <object>
+        <name>hole</name>
+        <pose>Unspecified</pose>
+        <truncated>0</truncated>
+        <difficult>0</difficult>
+        <bndbox>
+            <xmin>1080.9370549002033</xmin>
+            <ymin>532.5167447869903</ymin>
+            <xmax>1168.0951499257221</xmax>
+            <ymax>610.7193856084585</ymax>
+        </bndbox>
+    </object>    <object>
+        <name>hole</name>
+        <pose>Unspecified</pose>
+        <truncated>0</truncated>
+        <difficult>0</difficult>
+        <bndbox>
+            <xmin>976.1115257164754</xmin>
+            <ymin>502.0418451849705</ymin>
+            <xmax>1066.6972678343561</xmax>
+            <ymax>577.9732076962233</ymax>
+        </bndbox>
+    </object>    <object>
+        <name>hole</name>
+        <pose>Unspecified</pose>
+        <truncated>0</truncated>
+        <difficult>0</difficult>
+        <bndbox>
+            <xmin>872.2712470240048</xmin>
+            <ymin>474.6938153476124</ymin>
+            <xmax>956.9040269402627</xmax>
+            <ymax>543.8580834568738</ymax>
+        </bndbox>
+    </object>    <object>
+        <name>obj</name>
+        <pose>Unspecified</pose>
+        <truncated>0</truncated>
+        <difficult>0</difficult>
+        <bndbox>
+            <xmin>804.3206507746988</xmin>
+            <ymin>299.5009087438211</ymin>
+            <xmax>1448.0766167912032</xmax>
+            <ymax>760.0771296774736</ymax>
+        </bndbox>
+    </object>
+</annotation>

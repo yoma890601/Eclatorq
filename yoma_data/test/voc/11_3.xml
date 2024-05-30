@@ -1,0 +1,26 @@
+<annotation>
+    <folder>voc</folder>
+    <filename>11_3.jpg</filename>
+    <path>D:\pycharm\yolov7\yoma_data\test\voc\11_3.jpg</path>
+    <source>
+        <database>Unknown</database>
+    </source>
+    <size>
+        <width>1920</width>
+        <height>1080</height>
+        <depth>3</depth>
+    </size>
+    <segmented>0</segmented>
+    <object>
+        <name>wrench</name>
+        <pose>Unspecified</pose>
+        <truncated>0</truncated>
+        <difficult>0</difficult>
+        <bndbox>
+            <xmin>1102.4685785811364</xmin>
+            <ymin>560.6656021792495</ymin>
+            <xmax>1173.1464858256275</xmax>
+            <ymax>619.9670265600074</ymax>
+        </bndbox>
+    </object>
+</annotation>
