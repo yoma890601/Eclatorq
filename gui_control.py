@@ -206,7 +206,7 @@ class MyMainForm(QMainWindow, Ui_MainWindow):
         # self.type_comboBox.addItem('Auto')
         # self.type_comboBox.addItems(test)
         self.init_combo_type()
-
+        self.init_qr()
         self.type_comboBox.currentIndexChanged.connect(self.get_combo_type)
 
         # MyMainForm.resize(800, 720)
@@ -219,6 +219,14 @@ class MyMainForm(QMainWindow, Ui_MainWindow):
 
         print('__init__ ok')
 
+    def init_qr(self):
+        try :
+            path = './yoma_data'+"/qr.txt"
+            f = open(path, 'w')
+            indata = 0 # 預設使用板手 qr = 0
+            f.write(indata)
+        except Exception as e:
+            print(e)
     def get_qr(self):
         if self.QRcheckBox.isChecked() :
             use_qr ='1' 
