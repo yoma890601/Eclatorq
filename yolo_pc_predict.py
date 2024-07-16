@@ -1899,9 +1899,9 @@ class classify():
 
         class_names,kmodel = load_test(model_weights_name) # load tf.keras.Model once !!
 
-        RF=joblib.load('rf.model')
-        xgboostModel = xgb.XGBClassifier()
-        xgboostModel.load_model("xgb.json")
+        # RF=joblib.load('rf.model')
+        # xgboostModel = xgb.XGBClassifier()
+        # xgboostModel.load_model("xgb.json")
         print(class_names,kmodel)
         save_img = not opt.nosave and not source.endswith('.txt')  # save inference images
         save_txt = 1
