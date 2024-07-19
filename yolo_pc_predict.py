@@ -1955,8 +1955,9 @@ class classify():
             f.write(str(1))
         except Exception as e:
             print(e)
-        for path, img, im0s, vid_cap in dataset:
 
+
+        for path, img, im0s, vid_cap in dataset:
             img = torch.from_numpy(img).to(device)
             img = img.half() if half else img.float()  # uint8 to fp16/32
             img /= 255.0  # 0 - 255 to 0.0 - 1.0
@@ -2004,6 +2005,7 @@ class classify():
                         s += f"{n} {names[int(c)]}{'s' * (n > 1)}, "  # add to string
 
                 img_y,  img_x , _= im0.shape
+
                 # print(img_y,  img_x)
                 locktimes =1
                 if yolo_mode == 1 :
@@ -2507,7 +2509,8 @@ class classify():
                             key = cv2.waitKey(1)
                             mask = cv2.rectangle(blk, (int(wrench_xyxy[0]),int(wrench_xyxy[1])), (int(wrench_xyxy[2]),int(wrench_xyxy[3])),color=(0,255,0), thickness=-1 ) 
                             im0 = cv2.addWeighted(im0, 1, mask, 0.5, 0)
-                            # 綠框可以所
+                            # 綠框可以鎖
+
                             if key == 13 and yolo_mode == 2: # enter 27 esc
 
                                 print('鎖固完成')
@@ -2555,7 +2558,7 @@ class classify():
                     key = cv2.waitKey(1)  # 1 millisecond
                     if key == 13 and yolo_mode == 1: # 13 enter 27 esc
                         lock_order = 0
-                        if preds[0][maxlabel] >0.77:
+                        if preds[0][maxlabel] >0.77: # 進入下一接段之辨識信心程度要求 
                             yolo_mode = 2
                             print(preds[0][maxlabel])
                             print('into 鎖固')

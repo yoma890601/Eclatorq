@@ -168,7 +168,7 @@ class MyMainForm(QMainWindow, Ui_MainWindow):
         super(MyMainForm, self).__init__(parent)
         self.setupUi(self)
 
-        self.open_dir_Button.clicked.connect(self.open_folder)
+        # self.open_dir_Button.clicked.connect(self.open_folder)
         self.save_button.clicked.connect(self.save)
         self.close_button.clicked.connect(self.close)
         

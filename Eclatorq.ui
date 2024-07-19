@@ -195,6 +195,9 @@
      </property>
     </widget>
     <widget class="QPushButton" name="modereset">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
      <property name="geometry">
       <rect>
        <x>480</x>
@@ -474,6 +477,9 @@
      </property>
     </widget>
     <widget class="QPushButton" name="trainm_Button">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
      <property name="geometry">
       <rect>
        <x>140</x>
@@ -556,6 +562,9 @@
       </property>
      </widget>
      <widget class="QPushButton" name="trainy_Button">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
       <property name="geometry">
        <rect>
         <x>230</x>
@@ -704,6 +713,9 @@
     </property>
    </widget>
    <widget class="QPushButton" name="open_dir_Button">
+    <property name="enabled">
+     <bool>false</bool>
+    </property>
     <property name="geometry">
      <rect>
       <x>1110</x>
