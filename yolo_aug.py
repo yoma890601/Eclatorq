@@ -39,7 +39,7 @@ error_0,error_1,error_2,error_3,error_4 =[list()for i in range (len(error_messag
 
 def del_file(path):
     for i in os.listdir(path):
-        file_data = path + "\\" + i
+        file_data = path + "\\" + i ## why +\\
         os.remove(file_data)
 def getImagesInDir(dir_path):
     image_list = []
@@ -215,7 +215,7 @@ class augmentations_yoma ():
             # print("img_name : ",name)
 
             bboxes = self.read_voc(self.org_voc_dir_path, image_paths[i])
-            # model_time=time.strftime("%Y%m%d_%H%M_",time.localtime(os.path.getmtime ('./yoma_data/weights/best.pt'))) # 日期格式完整>>"%Y-%m-%d %H:%M:%S"
+            # model_time=time.strftime("%Y%m%d_%H%M_",time.localtime(os.path.getmtime ('./yoma_data/yolo_weights/best.pt'))) # 日期格式完整>>"%Y-%m-%d %H:%M:%S"
             #抓 model 日期 跟照片日期 決定 self.augment_num
 
             self.aug_yoma(image_paths[i],bboxes,name,self.augment_num_list[int(temp_num)])

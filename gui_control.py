@@ -223,7 +223,7 @@ class MyMainForm(QMainWindow, Ui_MainWindow):
         try :
             path = './yoma_data'+"/qr.txt"
             f = open(path, 'w')
-            indata = 0 # 預設使用板手 qr = 0
+            indata = str(0) # 預設使用板手 qr = 0
             f.write(indata)
         except Exception as e:
             print(e)
@@ -344,13 +344,13 @@ class MyMainForm(QMainWindow, Ui_MainWindow):
             pass
         else:
             trainy.run()
-            if  os.path.exists('./yoma_data/weights/new_best.pt'): #保存至yoma_data/weights/保存新的 
-                data_time=time.strftime("%Y%m%d_%H%M_",time.localtime(os.path.getmtime ('./yoma_data/weights/best.pt'))) # 日期格式完整>>"%Y-%m-%d %H:%M:%S"
-                new_yoma_wdir ='./yoma_data/weights/'+data_time +'best.pt' # best.pt >> yoma_wdir = './yoma_data/weights/'
-                # os.rename('./yoma_data/weights/best.pt',new_yoma_wdir) # "best.pt " >> time+'_best.pt'
+            if  os.path.exists('./yoma_data/yolo_weights/new_best.pt'): #保存至yoma_data/yolo_weights/保存新的 
+                data_time=time.strftime("%Y%m%d_%H%M_",time.localtime(os.path.getmtime ('./yoma_data/yolo_weights/best.pt'))) # 日期格式完整>>"%Y-%m-%d %H:%M:%S"
+                new_yoma_wdir ='./yoma_data/yolo_weights/'+data_time +'best.pt' # best.pt >> yoma_wdir = './yoma_data/yolo_weights/'
+                # os.rename('./yoma_data/yolo_weights/best.pt',new_yoma_wdir) # "best.pt " >> time+'_best.pt'
                 try:
-                    os.rename('./yoma_data/weights/best.pt',new_yoma_wdir) # "best.pt " >> time+'_best.pt'
-                    os.rename('./yoma_data/weights/new_best.pt','./yoma_data/weights/best.pt') # "best.pt " >> time+'_best.pt'
+                    os.rename('./yoma_data/yolo_weights/best.pt',new_yoma_wdir) # "best.pt " >> time+'_best.pt'
+                    os.rename('./yoma_data/yolo_weights/new_best.pt','./yoma_data/yolo_weights/best.pt') # "best.pt " >> time+'_best.pt'
 
                     print('best.pt  >> time+_best.pt')
                     #如果不會rename 開上面的
