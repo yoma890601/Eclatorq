@@ -332,8 +332,8 @@ class MyMainForm(QMainWindow, Ui_MainWindow):
     def retrain_yolo(self):
         trainy = yolo_train() # False True
         model_time = trainy.get_model_time()
-        classes = ['hole','obj']
-        category_id_to_name = {0: classes[0], 1: classes[1]}
+        classes = ['hole','obj','wrench','screw']
+        category_id_to_name = {0: classes[0], 1: classes[1], 2: classes[2], 3: classes[3]}
         yolo_aug = augmentations_yoma(name = 'Eclatorq',augment_num = 1 ,classes = classes,category_id_to_name = category_id_to_name)
         
 
