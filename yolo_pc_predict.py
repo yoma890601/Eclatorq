@@ -887,7 +887,7 @@ class classify():
                 temp_ymax=[]
                 obj_xyxy=[]
                 for *xyxyo, conf, cls in reversed(det): #改成xyxyo 因為我要用xyxy
-                    if int(cls) == 0:
+                    if int(cls) == 3:
                         xywh = (xyxy2xywh(torch.tensor(xyxyo).view(1, 4)) / gn).view(-1).tolist()  # normalized xywh
                         xmin = xywh[0]-xywh[2]/2
                         ymin = xywh[1]-xywh[3]/2
@@ -916,7 +916,7 @@ class classify():
                 normal_label_list = list()
                 imm=im0.copy()
                 for *xyxyo, conf, cls in reversed(det):
-                    if int(cls) == 0:
+                    if int(cls) == 3:
                         label = f'{names[int(cls)]} {conf:.2f}'    
 
                         xywh = (xyxy2xywh(torch.tensor(xyxyo).view(1, 4)) / gn).view(-1).tolist()  # normalized xywh
@@ -2045,8 +2045,8 @@ class classify():
                     print("ConnectionAbortedError")
                     cv2.putText(im0, "Waiting bluetooth wrench software restart", (10, 450),cv2.FONT_HERSHEY_PLAIN, 2.0, (0, 0, 255), 2)
                         
-                        
-                        
+                #classes = ['hole','obj','wrench','screw']
+                #category_id_to_name = {0: classes[0], 1: classes[1], 2: classes[2], 3: classes[3]}                        
                 if yolo_mode == 1 :
                     temp_sop_list = []
                     temp_xmin=[]
@@ -2056,7 +2056,7 @@ class classify():
                     temp_x = []
                     temp_y = []
                     for *xyxyo, conf, cls in reversed(det): #改成xyxyo 因為我要用xyxy
-                        if int(cls) == 0:
+                        if  int(cls) == 3: #  or int(cls) == 0
                             xywh = (xyxy2xywh(torch.tensor(xyxyo).view(1, 4)) / gn).view(-1).tolist()  # normalized xywh 影像的正規化
                             xmin = xywh[0]-xywh[2]/2
                             ymin = xywh[1]-xywh[3]/2
@@ -2081,7 +2081,7 @@ class classify():
                     
                     ############classify type qq
                     for *xyxyo, conf, cls in reversed(det): #從640 480的正規化 轉成物體大小的正規化
-                        if int(cls) == 0:
+                        if int(cls) == 3:
 
                             xywh = (xyxy2xywh(torch.tensor(xyxyo).view(1, 4)) / gn).view(-1).tolist()  # normalized xywh 影像的正規化
                             xyxy = [(xywh[0]-xywh[2]/2)*img_x-objxmin ,(xywh[1]-xywh[3]/2)*img_y -objymin, (xywh[0]+xywh[2]/2)*img_x-objxmin , (xywh[1]+xywh[3]/2)*img_y-objymin]
@@ -2177,8 +2177,8 @@ class classify():
                     # tttt_xyxy0=[]
                     # tttt_text = []
                     yyy=0
-                    for *xyxyo, conf, cls in reversed(det):
-                        if int(cls) == 0:
+                    for *xyxyo, conf, cls in reversed(det): # 顯示
+                        if  int(cls) == 3: # int(cls) == 0 
                             xywh = (xyxy2xywh(torch.tensor(xyxyo).view(1, 4)) / gn).view(-1).tolist()  # normalized xywh
                             cv2.circle(im0, [int(xywh[0]*img_x),int( xywh[1]*img_y)], 4, (255, 0, 0), -1) #green 辨識中心點在哪
                             text = ""
@@ -2205,13 +2205,13 @@ class classify():
                 elif yolo_mode == 2 :#鎖固###########################################################################################################################################
                     wrench_tf = 0
                     wrench_use_qr = 0
-                    # try :
-                    #     f = open('./yoma_data'+"/qr.txt", 'r')
-                    #     wrench_use_qr = int(f.read())
-                    #     # print(lock_order)
-                    # except Exception as e:
-                    #     print(e)
-                    # f.close()
+                    try :
+                        f = open('./yoma_data'+"/qr.txt", 'r')
+                        wrench_use_qr = int(f.read())
+                        # print(lock_order)
+                    except Exception as e:
+                        print(e)
+                    f.close()
                     # lock_order = read_txt('./yoma_data'+"/order.txt")
                     # try :
                     #     f = open('./yoma_data'+"/order.txt", 'r')
@@ -2256,7 +2256,7 @@ class classify():
                         print('w')
 
                         for *xyxyo, conf, cls in reversed(det): #改成xyxyo 因為我要用xyxy
-                            if int(cls) == 2 and conf>0.3: # 板手 wrench 
+                            if int(cls) == 2 and conf>0.0: # 板手 wrench 
                                 xywh = (xyxy2xywh(torch.tensor(xyxyo).view(1, 4)) / gn).view(-1).tolist()  # normalized xywh 影像的正規化
                                 yolo_wrench_xyxy = xyxy2xywh_transfer(xywh,[img_x,img_y],"xywh2xyxy") # yolo obj xmin ymin xmax ymax
                                 wrench_xyxy =[yolo_wrench_xyxy[0],yolo_wrench_xyxy[1],yolo_wrench_xyxy[2],yolo_wrench_xyxy[3]]
@@ -2267,13 +2267,13 @@ class classify():
                                 #         yolo_wrench_xyxy = xyxy2xywh_transfer(xywh,[img_x,img_y],"xywh2xyxy") # yolo obj xmin ymin xmax ymax
                                 #         wrench_xyxy =[yolo_wrench_xyxy[0],yolo_wrench_xyxy[1],yolo_wrench_xyxy[2],yolo_wrench_xyxy[3]]
                                 #         plot_one_box(wrench_xyxy, im0, label="wrench", color=[255,255,255], line_thickness=1)
-                                #         wrench_tf = 1
+                                #         wrench_tf = 1qqq
                                 #     else:
                                 #         wrench_tf =0
                                 #         print('wrench in hole')
 
                     for *xyxyo, conf, cls in reversed(det): #改成xyxyo 因為我要用xyxy
-                        if int(cls) == 0:
+                        if int(cls) == 3:
                             xywh = (xyxy2xywh(torch.tensor(xyxyo).view(1, 4)) / gn).view(-1).tolist()  # normalized xywh 影像的正規化
                             if  wrench_xyxy[2] > int(xywh[0]*img_x) > wrench_xyxy[0]  and wrench_xyxy[3] >int(xywh[1]*img_y) > wrench_xyxy[1]: 
                                 print("in wrench")
@@ -2337,7 +2337,7 @@ class classify():
                     temp_y = []
    
                     for *xyxyo, conf, cls in reversed(det): #改成xyxyo 因為我要用xyxy
-                        if int(cls) == 0:
+                        if int(cls) == 3:
                             
                             xywh = (xyxy2xywh(torch.tensor(xyxyo).view(1, 4)) / gn).view(-1).tolist()  # normalized xywh 影像的正規化
                             cv2.circle(im0, [int(xywh[0]*img_x), int(xywh[1]*img_y)], 5, (255, 255, 255), -1) #red 轉換後 lock_order 點
@@ -2377,6 +2377,7 @@ class classify():
                         # int(yolo_obj_xyxy[2]*img_x
                         
                         cv2.putText(im0, str(classs)+" Done", (int(yolo_obj_xyxy[0]+8), int(yolo_obj_xyxy[3]+25)),cv2.FONT_HERSHEY_PLAIN, 2.0, (0, 0, 255), 2)
+                        im0 = cv2.resize(im0,(1280,720))
                         cv2.imshow("Eclatorq Intelligent Lockout Guidance System", im0)#改視窗名字
                         # yolo_mode = 1
                         
@@ -2524,7 +2525,7 @@ class classify():
                         if int(cls) == 1:
                             xywh = (xyxy2xywh(torch.tensor(xyxyo).view(1, 4)) / gn).view(-1).tolist()  # normalized xywh
                             # cv2.circle(im0, [int(xywh[0]*img_x),int( xywh[1]*img_y)], 4, (255, 0, 0), -1) #green 辨識中心點在哪
-                        if int(cls) == 0:
+                        if int(cls) == 3:
                             xywh = (xyxy2xywh(torch.tensor(xyxyo).view(1, 4)) / gn).view(-1).tolist()  # normalized xywh
                             # cv2.circle(im0, [int(xywh[0]*img_x),int( xywh[1]*img_y)], 4, (255, 0, 0), -1) #green 辨識中心點在哪
                             if  wrench_xyxy[2] > int(xywh[0]*img_x) > wrench_xyxy[0] and wrench_xyxy[3]>int(xywh[1]*img_y) > wrench_xyxy[1]: 
@@ -2573,25 +2574,26 @@ class classify():
                     if lock_order_xy != buf_lock and temp_sop_list[lock_order_in][6] == 0:
             
                         if  wrench_xyxy[2] > int(lock_order_xy[0]) > wrench_xyxy[0] and wrench_xyxy[3]>int(lock_order_xy[1]) > wrench_xyxy[1]: 
+                            pass
                             # key = cv2.waitKey(1)
-                            mask = cv2.rectangle(blk, (int(wrench_xyxy[0]),int(wrench_xyxy[1])), (int(wrench_xyxy[2]),int(wrench_xyxy[3])),color=(0,255,0), thickness=-1 ) 
-                            im0 = cv2.addWeighted(im0, 1, mask, 0.5, 0)
+                            # mask = cv2.rectangle(blk, (int(wrench_xyxy[0]),int(wrench_xyxy[1])), (int(wrench_xyxy[2]),int(wrench_xyxy[3])),color=(0,255,0), thickness=-1 ) 
+                            # im0 = cv2.addWeighted(im0, 1, mask, 0.5, 0)
                             
                             
-                            try:
-                                data = connection.recv(1024).decode('utf-8')
-                                if data:
-                                    print(f"扳手就位後，收到的數據: {data}")
-                                    lock_order_ = data
-                                    if lock_order != lock_order_:
+                            # try:
+                            #     data = connection.recv(1024).decode('utf-8')
+                            #     if data:
+                            #         print(f"扳手就位後，收到的數據: {data}")
+                            #         lock_order_ = data
+                            #         if lock_order != lock_order_:
                                         
-                                        temp_sop_list[lock_order_in][6] = 1 
-                                        buf_lock = lock_order_xy
+                            #             temp_sop_list[lock_order_in][6] = 1 
+                            #             buf_lock = lock_order_xy
     
-                                        lock_order_xy = []
-                                        lock_order = lock_order_
-                            except BlockingIOError:
-                                pass
+                            #             lock_order_xy = []
+                            #             lock_order = lock_order_
+                            # except BlockingIOError:
+                            #     pass
                                 # print("無數據")
                                     
                                     
@@ -2640,11 +2642,13 @@ class classify():
                         #     pass
                         else :
                             # print("no")
-                            mask = cv2.rectangle(blk, (int(wrench_xyxy[0]),int(wrench_xyxy[1])), (int(wrench_xyxy[2]),int(wrench_xyxy[3])),color=(0,0,255), thickness=-1 ) 
-                            im0 = cv2.addWeighted(im0, 1, mask, 0.5, 0)                         
+                            # mask = cv2.rectangle(blk, (int(wrench_xyxy[0]),int(wrench_xyxy[1])), (int(wrench_xyxy[2]),int(wrench_xyxy[3])),color=(0,0,255), thickness=-1 ) 
+                            # im0 = cv2.addWeighted(im0, 1, mask, 0.5, 0)     
+                            cv2.putText(im0, "Wrench in the wrong position", (int(yolo_obj_xyxy[0]+8), int(yolo_obj_xyxy[3]+25)),cv2.FONT_HERSHEY_PLAIN, 2.0, (0, 0, 255), 2)
                 # if view_img:
                     # print("video")
                 im0 = cv2.resize(im0,(1280,720))
+
                 cv2.imshow("Eclatorq Intelligent Lockout Guidance System", im0)#改視窗名字
                 # if yolo_mode == 1:
                 #     try:
