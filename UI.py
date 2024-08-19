@@ -220,7 +220,7 @@ class Ui_MainWindow(object):
         self.train_Button.setCheckable(False)
         self.train_Button.setObjectName("train_Button")
         self.trainy_Button = QtWidgets.QPushButton(self.groupBox_4)
-        self.trainy_Button.setEnabled(False)
+        self.trainy_Button.setEnabled(True)
         self.trainy_Button.setGeometry(QtCore.QRect(230, 30, 100, 60))
         font = QtGui.QFont()
         font.setFamily("Times New Roman")

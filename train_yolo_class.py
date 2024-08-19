@@ -46,8 +46,8 @@ logger = logging.getLogger(__name__)
 
 def train(hyp, opt, device, tb_writer=None):
     logger.info(colorstr('hyperparameters: ') + ', '.join(f'{k}={v}' for k, v in hyp.items()))
-    save_dir, epochs, batch_size, total_batch_size, weights, rank, freeze = \
-        Path(opt.save_dir), opt.epochs, opt.batch_size, opt.total_batch_size, opt.weights, opt.global_rank, opt.freeze
+    save_dir,new_epochs, epochs, batch_size, total_batch_size, weights, rank, freeze = \
+        Path(opt.save_dir), opt.epochs, opt.new_epochs, opt.batch_size, opt.total_batch_size, opt.weights, opts.global_rank, opt.freeze
 
     # Directories
     wdir = save_dir / 'weights'
@@ -70,15 +70,7 @@ def train(hyp, opt, device, tb_writer=None):
         if not os.path.exists(weights):
             print('yolov7.pt must be have')
         else:
-            last_model_epoch = torch.load(weights, map_location=device)['epoch']  # load checkpoint
-            # last2_model_epoch = torch.load('./yoma_data/yolo_weights/20240103_0509_best.pt', map_location=device)['epoch']  # load checkpoint
-            print('last_model_epoch : ',last_model_epoch)
-
-            # print('last_model_epoch2222 : ',last2_model_epoch)
-            if last_model_epoch > 0 :
-                print('Transfer learnning')
-                epochs = last_model_epoch +epochs
-                print(epochs)
+            epochs = new_epochs
 
 
     wdir.mkdir(parents=True, exist_ok=True)  # make dir
@@ -573,10 +565,12 @@ def train(hyp, opt, device, tb_writer=None):
     return results
 
 
-class yolo_train ():
+class yolo_train (epochs = 10,new_epochs = 100):
     def __init__(self):
         self.yoma_wdir = './yoma_data/yolo_weights/best.pt'
-        self.epochs = 5
+        self.epochs = epochs
+        self.new_epochs = new_epochs
+
 
         # if  os.path.exists(self.yoma_wdir): #保存至yoma_data/yolo_weights/保存新的 
         #     data_time=time.strftime("%Y%m%d_%H%M_",time.localtime(os.path.getmtime (self.yoma_wdir))) # 日期格式完整>>"%Y-%m-%d %H:%M:%S"
@@ -613,6 +607,9 @@ class yolo_train ():
         parser.add_argument('--data', type=str, default='data/yoma.yaml', help='data.yaml path')
         parser.add_argument('--hyp', type=str, default='data/hyp.scratch.p5.yaml', help='hyperparameters path')
         parser.add_argument('--epochs', type=int, default= self.epochs)
+        parser.add_argument('--new_epochs', type=int, default= self.new_epochs)
+
+        
         parser.add_argument('--batch-size', type=int, default=4, help='total batch size for all GPUs')
 
         parser.add_argument('--img-size', nargs='+', type=int, default=[640, 640], help='[train, test] image sizes')

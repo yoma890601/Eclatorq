@@ -330,7 +330,7 @@ class MyMainForm(QMainWindow, Ui_MainWindow):
     #     retrain_yolo.start()
 
     def retrain_yolo(self):
-        trainy = yolo_train() # False True
+        trainy = yolo_train(epochs=10,new_epochs=100) # epoch for retrain #new_epoch for train new best.pt
         model_time = trainy.get_model_time()
         classes = ['hole','obj','wrench','screw']
         category_id_to_name = {0: classes[0], 1: classes[1], 2: classes[2], 3: classes[3]}

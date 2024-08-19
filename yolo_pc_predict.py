@@ -767,8 +767,8 @@ class classify():
         print(f'Done. ({time.time() - t0:.3f}s)')
         return  save_dir
     def type_add_detect(save_img=False,opt = None):
-        classes = ['hole','obj']
-        category_id_to_name = {0: classes[0], 1: classes[1]}
+        classes = ['hole','obj','wrench','screw']
+        category_id_to_name = {0: classes[0], 1: classes[1], 2: classes[2], 3: classes[3]}
         source, weights, view_img, save_txt, imgsz, trace = opt.source, opt.weights, opt.view_img, opt.save_txt, opt.img_size, not opt.no_trace
    
         # # print(source, weights, view_img, save_txt, imgsz, trace)

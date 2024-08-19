@@ -396,7 +396,7 @@ class augmentations_yoma ():
                 A.VerticalFlip(p=0.3),
                 A.RGBShift(r_shift_limit=25, g_shift_limit=25, b_shift_limit=25, p=0.9),
                 A.OneOf([A.Blur(blur_limit=3, p=0.5),A.ColorJitter(p=0.5),], p=1.0),
-                # A.Resize(width=1280, height=720),
+                A.Resize(width=1280, height=720),
             ], bbox_params=A.BboxParams(format="pascal_voc", min_area=2048,
                                         min_visibility=0.3, label_fields=['category_ids'])
         )
